@@ -8,7 +8,7 @@ function showPage(pageNum, studentList){
   studentList.hide();
   for(let i=0; i<=pageNum; i++){
     if(i=pageNum){
-    studentList.slice(`${[i-1]}0`, `${[i-1]}9`).show();
+    studentList.slice(`${[i-1]}0`, `${[i]}0`).show();
     }
   }
 };
@@ -33,6 +33,8 @@ function appendPageLinks(studentList){
   // created click function which provides argument to showPage function
 
   $(".pagination a").click((e)=>{
+    $(".pagination a").removeClass("active");
+    $(e.target).addClass("active");
     const pageNumber = e.target.innerHTML;
     showPage(pageNumber, $stList);
   });
