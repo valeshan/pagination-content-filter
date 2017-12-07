@@ -1,7 +1,3 @@
-//select ul, and determine length
-//show just first 10 of length
-//create button
-
 //function showPage(/* arguments here for page number and student list */) {
     // first hide all students on the page
     // Then loop through all students in our student list argument
@@ -12,10 +8,16 @@
 const $stList = $(".student-list").children();
 
 
-if($stList.length >10){
-  $stList.hide();
-  $stList.slice(1,10).show();
+function showPage(pageNum, studentList){
+  studentList.hide();
+  for(let i=0; i<=pageNum; i++){
+    if(i=pageNum){
+    studentList.slice(`${[i-1]}0`, `${[i-1]}9`).show();
+    }
+  }
 };
+
+showPage(2, $stList);
 
 
 function appendPageLinks(studentList){
@@ -29,10 +31,7 @@ function appendPageLinks(studentList){
 
 appendPageLinks($stList);
 
-
-function showPage(pageNum, studentList){
-  studentList.hide();
-  for(let i=0; i<=pageNum; i++){
-    studentList.slice(`${[i-1]}0`, `${[i-1]}9`).show()
-  }
-};
+$(".pagination a").click(()=>{
+  const pageNum = $(this).innerHTML;
+  console.log(pageNum);
+});
