@@ -42,3 +42,18 @@ function appendPageLinks(studentList){
 }
 
 appendPageLinks($stList);
+
+
+$(".page-header").append($("<div class = 'student-search'></div>"));
+$(".student-search").append($("<input placeholder = 'Search for students...'>"));
+$(".student-search").append($("<button type = 'submit'>Search</button>"));
+
+function searchList(){
+  $(".student-search button").click(()=>{
+    $searchInput = $(".student-search input").val().toLowerCase();
+    newarr = Array.from($(".student-list li h3").textContent());
+    console.log(newarr);
+  })
+  };
+
+searchList();
